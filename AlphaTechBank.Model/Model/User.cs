@@ -9,7 +9,9 @@ namespace AlphaTechBank.Model.Model
     public class User:BaseModel
     {
         public string Email { get; set; }
+        public bool IsDeleted { get; set; }
         public string Password { get; set; }
+        public string PasswordSalt { get; set; }
         public ICollection<Account> Accounts { get; set; }
     }
 }

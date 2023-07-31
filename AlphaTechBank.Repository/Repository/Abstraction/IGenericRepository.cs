@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AlphaTechBank.Repository.Repository.Abstraction
 {
-    public interface IGenericRepository
+    public interface IGenericRepository<T>
     {
-        Task CreateAsync();
-        void Update();
-        void Remove();
-        void RemoveRange();
+        Task CreateAsync(T entity);
+        void Update(T entity);
+        void Remove(T entity);
+        void RemoveRange(IEnumerable<T> entities);
     }
 }

@@ -1,4 +1,6 @@
-﻿using AlphaTechBank.Repository.Repository.Abstraction;
+﻿using AlphaTechBank.Repository.Data;
+using AlphaTechBank.Repository.Repository.Abstraction;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +9,33 @@ using System.Threading.Tasks;
 
 namespace AlphaTechBank.Repository.Repository.Implementation
 {
-    public class GenericRepository : IGenericRepository
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        public Task CreateAsync()
+
+        private readonly DbSet<T> _dbSet;
+        public GenericRepository(DataBaseContext dataBaseContext)
         {
-            throw new NotImplementedException();
+            _dbSet = dataBaseContext.Set<T>();
         }
 
-        public void Remove()
+        public async Task CreateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
         }
 
-        public void RemoveRange()
+        public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
         }
 
-        public void Update()
+        public void RemoveRange(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            _dbSet.RemoveRange(entities);
+        }
+
+        public void Update(T entity)
+        {
+            _dbSet.Update(entity);
         }
     }
 }
