@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaTechBank.UI", "AlphaTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaTechBank.Model", "AlphaTechBank.Model\AlphaTechBank.Model.csproj", "{AA5187AE-BDC7-44E1-8C70-BD5CB5FC875B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaTechBank.Repository", "AlphaTechBank.Repository\AlphaTechBank.Repository.csproj", "{C53A3B3C-9798-408A-BAD0-E1DAFAC73C93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AA5187AE-BDC7-44E1-8C70-BD5CB5FC875B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA5187AE-BDC7-44E1-8C70-BD5CB5FC875B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA5187AE-BDC7-44E1-8C70-BD5CB5FC875B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C53A3B3C-9798-408A-BAD0-E1DAFAC73C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C53A3B3C-9798-408A-BAD0-E1DAFAC73C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C53A3B3C-9798-408A-BAD0-E1DAFAC73C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C53A3B3C-9798-408A-BAD0-E1DAFAC73C93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

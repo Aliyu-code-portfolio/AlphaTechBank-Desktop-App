@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace AlphaTechBank.Model.Model
 {
-    public class Account
+    public class Account:BaseModel
     {
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
@@ -21,10 +21,18 @@ namespace AlphaTechBank.Model.Model
         public string PhoneNumber { get; set; }
         public string AccountNumber { get; set; }
         public AccountType AccountType { get; set; }
+        [Column(TypeName = "money")]
         public decimal Balance { get; set; }
-        public decimal MInBalance { get; set; } //=> AccountType == AccountType.Savings ? 1000 : 0;
+        [Column(TypeName = "money")]
+        public decimal MInBalance { get; set; } 
         public bool IsActive { get; set; } = true;
-        public List<Transaction> Transations { get; set; } //= new List<Transaction>();
+        public List<Transaction> Transactions { get; set; }
         public User User { get; set; }
+
+        public Account()
+        {
+            MInBalance = AccountType == AccountType.Savings ? 1000 : 0;
+            Transactions = new();
+        }
     }
 }
