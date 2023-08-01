@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AlphaTechBank.Core\AlphaTechBank.Core.csproj" />
     <ProjectReference Include="..\AlphaTechBank.Repository\AlphaTechBank.Repository.csproj" />
   </ItemGroup>
 

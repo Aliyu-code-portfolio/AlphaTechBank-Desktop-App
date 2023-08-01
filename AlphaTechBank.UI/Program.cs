@@ -1,4 +1,5 @@
 using AlphaTechBank.Repository.Data;
+using AlphaTechBank.UI.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,8 @@ namespace AlphaTechBank.UI
             //Add Services here
             services.AddTransient<Form1>();
             services.AddDbContext<DataBaseContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.ConfigureUnitOfWork();
+            services.ConfigureServiceManager();
 
             using ServiceProvider serviceProvider = services.BuildServiceProvider();
             var form1 = serviceProvider.GetRequiredService<Form1>();
