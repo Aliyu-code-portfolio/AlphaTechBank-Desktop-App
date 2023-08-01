@@ -15,8 +15,8 @@ namespace AlphaTechBank.Core.Services.Abstraction
         Task<Account> GetAccountByNumber(string accountNumber);
         Task<IEnumerable<Account>> GetAllAccounts();
         Task<string> ValidateAccountNumber(string accountNumber);
-        Task<(bool status, string error)> Deposit(string accountNumber);
+        Task<(bool status, string error)> Deposit(string accountNumber, decimal amount);
         Task<(bool status, string error)> Withdrawal(string accountNumber, decimal amount);
-        Task<(bool status, string error)> Transfer(string accountNumber,string creditAccountNumber, decimal amount, string description);
+        Task<(bool status, string error)> Transfer(string accountNumber, string creditAccountNumber, decimal amount, string description, string receiverName);
     }
 }

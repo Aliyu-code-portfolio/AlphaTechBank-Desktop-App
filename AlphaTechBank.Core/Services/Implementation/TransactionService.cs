@@ -19,16 +19,26 @@ namespace AlphaTechBank.Core.Services.Implementation
                 .GetTransactionById(id);
             _unitOfWork.TransactionRepository.Remove(transaction);
             await _unitOfWork.SaveAsync();
+            _unitOfWork.Dispose();
         }
 
-        public Task<IEnumerable<Transaction>> GetAllDailyTransaction(string date)
+        public async Task<IEnumerable<Transaction>> GetAllDailyTransactions(string date)
         {
-            throw new NotImplementedException();
+            bool isValidDate = DateOnly.TryParse(date, out DateOnly dateConverted);
+            if (!isValidDate)
+            {
+                return null;
+            }
+            IEnumerable<Transaction> transactions =await _unitOfWork.TransactionRepository
+                .GetAllDailyTransactions(dateConverted);
+            return transactions;
         }
 
-        public Task<IEnumerable<Transaction>> GetAllTransactionByAccountNumber(string accountNumber)
+        public async Task<IEnumerable<Transaction>> GetAllTransactionByAccountNumber(string accountNumber)
         {
-            throw new NotImplementedException();
+            IEnumerable<Transaction> transactions =await _unitOfWork.TransactionRepository
+                .GetAllAccountTransaction(accountNumber);
+            return transactions;
         }
     }
 }

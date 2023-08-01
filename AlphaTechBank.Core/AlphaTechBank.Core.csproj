@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ServiceManager\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AlphaTechBank.Repository\AlphaTechBank.Repository.csproj" />
   </ItemGroup>
 
