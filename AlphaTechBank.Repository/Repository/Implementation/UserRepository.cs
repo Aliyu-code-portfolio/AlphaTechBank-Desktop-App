@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace AlphaTechBank.Repository.Repository.Implementation
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository :GenericRepository<User>, IUserRepository
     {
         private readonly DbSet<User> _users;
 
-        public UserRepository(DataBaseContext databaseContext)
+        public UserRepository(DataBaseContext databaseContext):base(databaseContext)
         {
             _users = databaseContext.Set<User>();
         }
@@ -34,6 +34,11 @@ namespace AlphaTechBank.Repository.Repository.Implementation
         {
             return await _users.Where(u => u.Id == id&& !u.IsDeleted)
                 .Include(u => u.Accounts).FirstOrDefaultAsync();
+        }
+
+        public void UpdateUser(User user)
+        {
+            _users.Update(user);
         }
     }
 }

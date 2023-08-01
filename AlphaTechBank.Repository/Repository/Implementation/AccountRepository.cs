@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace AlphaTechBank.Repository.Repository.Implementation
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository :GenericRepository<Account>, IAccountRepository
     {
         private readonly DbSet<Account> _accounts;
 
-        public AccountRepository(DataBaseContext databaseContext)
+        public AccountRepository(DataBaseContext databaseContext):base(databaseContext)
         {
             _accounts = databaseContext.Set<Account>();
         }
@@ -34,6 +34,18 @@ namespace AlphaTechBank.Repository.Repository.Implementation
         {
             return await _accounts.Where(a =>a.IsActive)
                .Include(a => a.Transactions).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Account>> GetAllUserAccounts(int userId)
+        {
+            return await _accounts.Where(a => a.IsActive && a.UserId==userId)
+               .Include(a => a.Transactions).ToListAsync();
+        }
+
+        public async Task<string> ValidateAccount(string accountNumber)
+        {
+            return await _accounts.Where(a =>a.AccountNumber==accountNumber && a.IsActive).Select(a=>a.FirstName+" "+a.LastName)
+               .FirstOrDefaultAsync();
         }
     }
 }

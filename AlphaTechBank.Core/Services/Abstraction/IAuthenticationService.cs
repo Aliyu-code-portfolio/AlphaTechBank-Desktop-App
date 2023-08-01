@@ -9,8 +9,8 @@ namespace AlphaTechBank.Core.Services.Abstraction
 {
     public interface IAuthenticationService
     {
-        Task<User> LoginUser(string email, string password);
-        Task<User> RegisterUser(string email, string password);
+        Task<(User user, string error)> LoginUser(string email, string password);
+        Task<(bool status, string error)> RegisterUser(string email, string password);
 
     }
 }

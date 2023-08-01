@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="ServiceManager\" />
-    <Folder Include="Services\Implementation\" />
   </ItemGroup>
 
   <ItemGroup>

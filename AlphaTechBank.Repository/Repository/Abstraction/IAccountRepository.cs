@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace AlphaTechBank.Repository.Repository.Abstraction
 {
-    public interface IAccountRepository
+    public interface IAccountRepository:IGenericRepository<Account>
     {
         Task<Account> GetAccountById(int id);
         Task<Account> GetAccountByAccountNumber(string accountNumber);
         Task<IEnumerable<Account>> GetAccountUsers();
+        Task<IEnumerable<Account>> GetAllUserAccounts(int userId);
+        Task<string> ValidateAccount(string accountNumber);
     }
 }

@@ -29,10 +29,5 @@ namespace AlphaTechBank.Model.Model
         public List<Transaction> Transactions { get; set; }
         public User User { get; set; }
 
-        public Account()
-        {
-            MInBalance = AccountType == AccountType.Savings ? 1000 : 0;
-            Transactions = new();
-        }
     }
 }

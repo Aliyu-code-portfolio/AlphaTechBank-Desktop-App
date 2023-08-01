@@ -2,20 +2,14 @@
 using AlphaTechBank.Repository.Data;
 using AlphaTechBank.Repository.Repository.Abstraction;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlphaTechBank.Repository.Repository.Implementation
 {
-    public class TransactionRepository : ITransactionRepository
+    public class TransactionRepository :GenericRepository<Transaction>, ITransactionRepository
     {
         private readonly DbSet<Transaction> _transactions;
 
-        public TransactionRepository(DataBaseContext databaseContext)
+        public TransactionRepository(DataBaseContext databaseContext):base(databaseContext)
         {
             _transactions = databaseContext.Set<Transaction>();
         }
@@ -35,6 +29,11 @@ namespace AlphaTechBank.Repository.Repository.Implementation
         {
             return await _transactions.Where(t => !t.IsDeleted)
                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Transaction>> GetAllDailyTransactions(DateOnly date)
+        {
+            return await _transactions.Where(t => DateOnly.Parse(t.CreateDate.Date.ToString()) == date).ToListAsync();
         }
     }
 }
