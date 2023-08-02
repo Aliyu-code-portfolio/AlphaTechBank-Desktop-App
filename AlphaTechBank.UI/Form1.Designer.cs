@@ -39,31 +39,28 @@
             label2 = new Label();
             bankName = new Label();
             dashboardPanel = new Panel();
-            createAccountPanel = new Panel();
-            firstName = new TextBox();
-            button1 = new Button();
-            label3 = new Label();
             createAccountButton = new Button();
             transferButton = new Button();
             withdrawalButton = new Button();
             depositButton = new Button();
             accountsList = new ListBox();
             label5 = new Label();
-            label4 = new Label();
+            createAccountPanel = new Panel();
+            createAcctError = new Label();
             label6 = new Label();
-            textBox2 = new TextBox();
-            label7 = new Label();
-            textBox3 = new TextBox();
+            current = new CheckBox();
+            savings = new CheckBox();
+            label12 = new Label();
             label8 = new Label();
             lastName = new TextBox();
-            label9 = new Label();
-            textBox5 = new TextBox();
-            label10 = new Label();
-            textBox6 = new TextBox();
-            label11 = new Label();
-            textBox7 = new TextBox();
-            label12 = new Label();
-            textBox8 = new TextBox();
+            label7 = new Label();
+            pin = new TextBox();
+            phoneLebel = new Label();
+            phone = new TextBox();
+            label4 = new Label();
+            firstName = new TextBox();
+            createAccount = new Button();
+            label3 = new Label();
             loginPanel.SuspendLayout();
             loginGroup.SuspendLayout();
             dashboardPanel.SuspendLayout();
@@ -73,8 +70,9 @@
             // loginPanel
             // 
             loginPanel.BackColor = SystemColors.HotTrack;
-            loginPanel.Controls.Add(loginGroup);
             loginPanel.Controls.Add(bankName);
+            loginPanel.Controls.Add(loginGroup);
+            loginPanel.Controls.Add(dashboardPanel);
             loginPanel.Location = new Point(32, 12);
             loginPanel.Name = "loginPanel";
             loginPanel.Size = new Size(930, 507);
@@ -188,65 +186,11 @@
             dashboardPanel.Controls.Add(depositButton);
             dashboardPanel.Controls.Add(accountsList);
             dashboardPanel.Controls.Add(label5);
-            dashboardPanel.Location = new Point(12, 15);
+            dashboardPanel.Location = new Point(3, 22);
             dashboardPanel.Name = "dashboardPanel";
-            dashboardPanel.Size = new Size(930, 507);
+            dashboardPanel.Size = new Size(859, 507);
             dashboardPanel.TabIndex = 5;
             dashboardPanel.Paint += panel1_Paint;
-            // 
-            // createAccountPanel
-            // 
-            createAccountPanel.BackColor = SystemColors.HotTrack;
-            createAccountPanel.Controls.Add(label9);
-            createAccountPanel.Controls.Add(textBox5);
-            createAccountPanel.Controls.Add(label10);
-            createAccountPanel.Controls.Add(textBox6);
-            createAccountPanel.Controls.Add(label11);
-            createAccountPanel.Controls.Add(textBox7);
-            createAccountPanel.Controls.Add(label12);
-            createAccountPanel.Controls.Add(textBox8);
-            createAccountPanel.Controls.Add(label8);
-            createAccountPanel.Controls.Add(lastName);
-            createAccountPanel.Controls.Add(label7);
-            createAccountPanel.Controls.Add(textBox3);
-            createAccountPanel.Controls.Add(label6);
-            createAccountPanel.Controls.Add(textBox2);
-            createAccountPanel.Controls.Add(label4);
-            createAccountPanel.Controls.Add(firstName);
-            createAccountPanel.Controls.Add(button1);
-            createAccountPanel.Controls.Add(label3);
-            createAccountPanel.Location = new Point(9, 18);
-            createAccountPanel.Name = "createAccountPanel";
-            createAccountPanel.Size = new Size(930, 507);
-            createAccountPanel.TabIndex = 6;
-            // 
-            // firstName
-            // 
-            firstName.Location = new Point(457, 98);
-            firstName.Name = "firstName";
-            firstName.Size = new Size(225, 23);
-            firstName.TabIndex = 6;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(403, 439);
-            button1.Name = "button1";
-            button1.Size = new Size(162, 41);
-            button1.TabIndex = 5;
-            button1.Text = "Create an account";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Enabled = false;
-            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlLight;
-            label3.Location = new Point(46, 34);
-            label3.Name = "label3";
-            label3.Size = new Size(170, 30);
-            label3.TabIndex = 0;
-            label3.Text = "AlphaTech Bank";
             // 
             // createAccountButton
             // 
@@ -309,51 +253,88 @@
             label5.TabIndex = 0;
             label5.Text = "AlphaTech Bank";
             // 
-            // label4
+            // createAccountPanel
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(316, 106);
-            label4.Name = "label4";
-            label4.Size = new Size(64, 15);
-            label4.TabIndex = 7;
-            label4.Text = "First Name";
+            createAccountPanel.BackColor = SystemColors.HotTrack;
+            createAccountPanel.Controls.Add(createAcctError);
+            createAccountPanel.Controls.Add(label6);
+            createAccountPanel.Controls.Add(current);
+            createAccountPanel.Controls.Add(savings);
+            createAccountPanel.Controls.Add(label12);
+            createAccountPanel.Controls.Add(label8);
+            createAccountPanel.Controls.Add(lastName);
+            createAccountPanel.Controls.Add(label7);
+            createAccountPanel.Controls.Add(pin);
+            createAccountPanel.Controls.Add(phoneLebel);
+            createAccountPanel.Controls.Add(phone);
+            createAccountPanel.Controls.Add(label4);
+            createAccountPanel.Controls.Add(firstName);
+            createAccountPanel.Controls.Add(createAccount);
+            createAccountPanel.Controls.Add(label3);
+            createAccountPanel.Location = new Point(32, 12);
+            createAccountPanel.Name = "createAccountPanel";
+            createAccountPanel.Size = new Size(930, 507);
+            createAccountPanel.TabIndex = 6;
+            // 
+            // createAcctError
+            // 
+            createAcctError.AutoSize = true;
+            createAcctError.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            createAcctError.ForeColor = Color.Red;
+            createAcctError.Location = new Point(391, 389);
+            createAcctError.Name = "createAcctError";
+            createAcctError.Size = new Size(45, 21);
+            createAcctError.TabIndex = 19;
+            createAcctError.Text = "Error";
+            createAcctError.Visible = false;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(316, 219);
+            label6.Enabled = false;
+            label6.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label6.ForeColor = SystemColors.ControlLight;
+            label6.Location = new Point(414, 74);
             label6.Name = "label6";
-            label6.Size = new Size(64, 15);
-            label6.TabIndex = 9;
-            label6.Text = "First Name";
+            label6.Size = new Size(220, 30);
+            label6.TabIndex = 18;
+            label6.Text = "Create Bank Account";
             // 
-            // textBox2
+            // current
             // 
-            textBox2.Location = new Point(457, 211);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(225, 23);
-            textBox2.TabIndex = 8;
+            current.AutoSize = true;
+            current.Location = new Point(599, 353);
+            current.Name = "current";
+            current.Size = new Size(66, 19);
+            current.TabIndex = 17;
+            current.Text = "Current";
+            current.UseVisualStyleBackColor = true;
+            current.CheckedChanged += current_CheckedChanged;
             // 
-            // label7
+            // savings
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(316, 182);
-            label7.Name = "label7";
-            label7.Size = new Size(64, 15);
-            label7.TabIndex = 11;
-            label7.Text = "First Name";
+            savings.AutoSize = true;
+            savings.Location = new Point(468, 351);
+            savings.Name = "savings";
+            savings.Size = new Size(66, 19);
+            savings.TabIndex = 16;
+            savings.Text = "Savings";
+            savings.UseVisualStyleBackColor = true;
+            savings.CheckedChanged += savings_CheckedChanged;
             // 
-            // textBox3
+            // label12
             // 
-            textBox3.Location = new Point(457, 174);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(225, 23);
-            textBox3.TabIndex = 10;
+            label12.AutoSize = true;
+            label12.Location = new Point(317, 353);
+            label12.Name = "label12";
+            label12.Size = new Size(79, 15);
+            label12.TabIndex = 15;
+            label12.Text = "Account Type";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(316, 144);
+            label8.Location = new Point(317, 188);
             label8.Name = "label8";
             label8.Size = new Size(63, 15);
             label8.TabIndex = 13;
@@ -361,83 +342,89 @@
             // 
             // lastName
             // 
-            lastName.Location = new Point(457, 136);
+            lastName.Location = new Point(458, 180);
             lastName.Name = "lastName";
             lastName.Size = new Size(225, 23);
             lastName.TabIndex = 12;
             // 
-            // label9
+            // label7
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(316, 302);
-            label9.Name = "label9";
-            label9.Size = new Size(64, 15);
-            label9.TabIndex = 21;
-            label9.Text = "First Name";
+            label7.AutoSize = true;
+            label7.Location = new Point(317, 245);
+            label7.Name = "label7";
+            label7.Size = new Size(26, 15);
+            label7.TabIndex = 11;
+            label7.Text = "PIN";
             // 
-            // textBox5
+            // pin
             // 
-            textBox5.Location = new Point(457, 294);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(225, 23);
-            textBox5.TabIndex = 20;
+            pin.Location = new Point(458, 237);
+            pin.Name = "pin";
+            pin.Size = new Size(225, 23);
+            pin.TabIndex = 10;
             // 
-            // label10
+            // phoneLebel
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(316, 340);
-            label10.Name = "label10";
-            label10.Size = new Size(64, 15);
-            label10.TabIndex = 19;
-            label10.Text = "First Name";
+            phoneLebel.AutoSize = true;
+            phoneLebel.Location = new Point(317, 308);
+            phoneLebel.Name = "phoneLebel";
+            phoneLebel.Size = new Size(86, 15);
+            phoneLebel.TabIndex = 9;
+            phoneLebel.Text = "Phone number";
+            phoneLebel.TextAlign = ContentAlignment.TopRight;
             // 
-            // textBox6
+            // phone
             // 
-            textBox6.Location = new Point(457, 332);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(225, 23);
-            textBox6.TabIndex = 18;
+            phone.Location = new Point(458, 300);
+            phone.Name = "phone";
+            phone.Size = new Size(225, 23);
+            phone.TabIndex = 8;
             // 
-            // label11
+            // label4
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(316, 377);
-            label11.Name = "label11";
-            label11.Size = new Size(64, 15);
-            label11.TabIndex = 17;
-            label11.Text = "First Name";
+            label4.AutoSize = true;
+            label4.Location = new Point(317, 132);
+            label4.Name = "label4";
+            label4.Size = new Size(64, 15);
+            label4.TabIndex = 7;
+            label4.Text = "First Name";
             // 
-            // textBox7
+            // firstName
             // 
-            textBox7.Location = new Point(457, 369);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(225, 23);
-            textBox7.TabIndex = 16;
+            firstName.Location = new Point(458, 124);
+            firstName.Name = "firstName";
+            firstName.Size = new Size(225, 23);
+            firstName.TabIndex = 6;
             // 
-            // label12
+            // createAccount
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(316, 264);
-            label12.Name = "label12";
-            label12.Size = new Size(64, 15);
-            label12.TabIndex = 15;
-            label12.Text = "First Name";
+            createAccount.Location = new Point(401, 422);
+            createAccount.Name = "createAccount";
+            createAccount.Size = new Size(162, 41);
+            createAccount.TabIndex = 5;
+            createAccount.Text = "Create an account";
+            createAccount.UseVisualStyleBackColor = true;
+            createAccount.Click += createAccount_Click;
             // 
-            // textBox8
+            // label3
             // 
-            textBox8.Location = new Point(457, 256);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(225, 23);
-            textBox8.TabIndex = 14;
+            label3.AutoSize = true;
+            label3.Enabled = false;
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlLight;
+            label3.Location = new Point(46, 34);
+            label3.Name = "label3";
+            label3.Size = new Size(170, 30);
+            label3.TabIndex = 0;
+            label3.Text = "AlphaTech Bank";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(934, 510);
-            Controls.Add(createAccountPanel);
-            Controls.Add(dashboardPanel);
             Controls.Add(loginPanel);
+            Controls.Add(createAccountPanel);
             Name = "Form1";
             Text = "AlphaTech Bank";
             loginPanel.ResumeLayout(false);
@@ -472,22 +459,19 @@
         private Button createAccountButton;
         private Panel createAccountPanel;
         private TextBox firstName;
-        private Button button1;
+        private Button createAccount;
         private Label label3;
-        private Label label9;
-        private TextBox textBox5;
-        private Label label10;
-        private TextBox textBox6;
-        private Label label11;
-        private TextBox textBox7;
         private Label label12;
-        private TextBox textBox8;
         private Label label8;
         private TextBox lastName;
         private Label label7;
-        private TextBox textBox3;
-        private Label label6;
-        private TextBox textBox2;
+        private TextBox pin;
+        private Label phoneLebel;
+        private TextBox phone;
         private Label label4;
+        private CheckBox current;
+        private CheckBox savings;
+        private Label label6;
+        private Label createAcctError;
     }
 }
