@@ -14,12 +14,12 @@ namespace AlphaTechBank.Model.Model
     {
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
         public int TransactionPin { get; set; }
-        public string PhoneNumber { get; set; }
-        public string AccountNumber { get; set; }
+        public string PhoneNumber { get; set; } = string.Empty;
+        public string AccountNumber { get; set; } = string.Empty;
         public AccountType AccountType { get; set; }
         [Column(TypeName = "money")]
         public decimal Balance { get; set; }

@@ -13,6 +13,7 @@ namespace AlphaTechBank.Core.Services.Abstraction
         Task DeleteAccount(string accountNumber);
         Task SoftDeleteAccount(string accountNumber);
         Task<Account> GetAccountByNumber(string accountNumber);
+        Task<IEnumerable<Account>> GetAllUserAccounts(int userId);
         Task<IEnumerable<Account>> GetAllAccounts();
         Task<string> ValidateAccountNumber(string accountNumber);
         Task<(bool status, string error)> Deposit(string accountNumber, decimal amount);

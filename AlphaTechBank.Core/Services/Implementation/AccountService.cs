@@ -36,7 +36,7 @@ namespace AlphaTechBank.Core.Services.Implementation
             };
             await _unitOfWork.AccountRepository.CreateAsync(account);
             await _unitOfWork.SaveAsync();
-            _unitOfWork.Dispose();
+            //_unitOfWork.Dispose();
             return account;
         }
 
@@ -45,7 +45,7 @@ namespace AlphaTechBank.Core.Services.Implementation
             Account account =await GetAccount(accountNumber);
             _unitOfWork.AccountRepository.Remove(account);
             await _unitOfWork.SaveAsync();
-            _unitOfWork.Dispose();
+            //_unitOfWork.Dispose();
         }
 
         public async Task<(bool status, string error)> Deposit(string accountNumber, decimal amount)
@@ -58,7 +58,7 @@ namespace AlphaTechBank.Core.Services.Implementation
             account.Balance += amount;
             _unitOfWork.AccountRepository.Update(account);
             await _unitOfWork.SaveAsync();
-            _unitOfWork.Dispose();
+            //_unitOfWork.Dispose();
             return (true, string.Empty);
         }
 
@@ -70,6 +70,11 @@ namespace AlphaTechBank.Core.Services.Implementation
         public async Task<IEnumerable<Account>> GetAllAccounts()
         {
             return await _unitOfWork.AccountRepository.GetAccountUsers();
+        }
+
+        public Task<IEnumerable<Account>> GetAllUserAccounts(int userId)
+        {
+            return _unitOfWork.AccountRepository.GetAllUserAccounts(userId);
         }
 
         public async Task SoftDeleteAccount(string accountNumber)
@@ -146,7 +151,7 @@ namespace AlphaTechBank.Core.Services.Implementation
             };
             await _unitOfWork.TransactionRepository.CreateAsync(transaction);
             await _unitOfWork.SaveAsync();
-            _unitOfWork.Dispose();
+            //_unitOfWork.Dispose();
             return (true, string.Empty);
         }
         private async Task<Account> GetAccount(string accountNumber)

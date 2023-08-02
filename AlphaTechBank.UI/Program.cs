@@ -20,12 +20,14 @@ namespace AlphaTechBank.UI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             Configuration = builder.Build();
+            //var connect = Configuration.GetConnectionString("Default");
             ServiceCollection services = new ServiceCollection();
             //Add Services here
             services.AddTransient<Form1>();
-            services.AddDbContext<DataBaseContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<DataBaseContext>(options=>options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AlphaTechBankDb;Integrated Security=True;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
             services.ConfigureUnitOfWork();
             services.ConfigureServiceManager();
 

@@ -26,23 +26,32 @@ namespace AlphaTechBank.Core.Services.Implementation
                 User user = await _unitOfWork.UserRepository.GetUserByEmail(email);
                 if (user is null || !password.CompareHash(user.PasswordSalt, user.Password))
                 {
-                    return (user, "Email or Password is incorrect");
+                    return (null, "Email or Password is incorrect");
                 }
                 return (user, string.Empty);
             }
-            return (new User(), "Invalid email address");
+            return (null, "Invalid email address");
         }
 
         public async Task<(bool status, string error)> RegisterUser(string email, string password)
         {
             if (email.IsEmailValid())
             {
-                var passwordDetails = password.GenerateHash();
-                User user = new User() { Email = email, Password = passwordDetails[0], PasswordSalt = passwordDetails[1] };
-                _unitOfWork.UserRepository.CreateAsync(user);
-                await _unitOfWork.SaveAsync();
-                _unitOfWork.Dispose();
-                return (true, string.Empty);
+                User userExist =await _unitOfWork.UserRepository.GetUserByEmail(email);
+                if(userExist is null)
+                {
+                    var passwordDetails = password.GenerateHash();
+                    User user = new User() { Email = email, Password = passwordDetails[0], PasswordSalt = passwordDetails[1] };
+                    _unitOfWork.UserRepository.CreateAsync(user);
+                    await _unitOfWork.SaveAsync();
+                    //_unitOfWork.Dispose();
+                    return (true, string.Empty);
+
+                }
+                else
+                {
+                    return (false, "User already exist");
+                }
             }
             else
             {

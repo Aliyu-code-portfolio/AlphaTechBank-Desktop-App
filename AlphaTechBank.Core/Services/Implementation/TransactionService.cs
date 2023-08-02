@@ -19,7 +19,7 @@ namespace AlphaTechBank.Core.Services.Implementation
                 .GetTransactionById(id);
             _unitOfWork.TransactionRepository.Remove(transaction);
             await _unitOfWork.SaveAsync();
-            _unitOfWork.Dispose();
+            //_unitOfWork.Dispose();
         }
 
         public async Task<IEnumerable<Transaction>> GetAllDailyTransactions(string date)

@@ -11,7 +11,7 @@ namespace AlphaTechBank.Model.Model
     {
         [Key]
         public int Id { get; set; }
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; set; } = string.Empty;
         public DateTime CreateDate { get; set; }= DateTime.Now;
         public DateTime ModifiedDate { get; set; }
     }
