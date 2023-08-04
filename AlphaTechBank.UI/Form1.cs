@@ -7,6 +7,7 @@ namespace AlphaTechBank.UI
     {
         private IServiceManager _serviceManager;
         User _user;
+        Account _account;
         BindingSource bindingAccounts;
         public Form1(IServiceManager serviceManager)
         {
@@ -67,6 +68,10 @@ namespace AlphaTechBank.UI
         }
         private void depositButton_Click(object sender, EventArgs e)
         {
+            _account = (Account)accountsList.SelectedItem;
+            accountNumberLabel.Text += _account.AccountNumber;
+            depositPanel.Show();
+            depositPanel.BringToFront();
 
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -119,17 +124,129 @@ namespace AlphaTechBank.UI
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(firstname) || string.IsNullOrWhiteSpace(firstname) || string.IsNullOrWhiteSpace(phoneNumber) || isValidPin)
+            if (string.IsNullOrWhiteSpace(firstname) || string.IsNullOrWhiteSpace(lastname) || string.IsNullOrWhiteSpace(phoneNumber) || isValidPin)
             {
                 createAcctError.Text = "Invalid form inputs";
                 createAcctError.Show();
                 return;
             }
-            Account account = await _serviceManager.AccountService.CreateAccount(_user.Id, firstname, lastname, _user.Email, PIN, phoneNumber, accountType);
+            Account account = await _serviceManager.AccountService
+                .CreateAccount(_user.Id, firstname, lastname, _user.Email, PIN, phoneNumber, accountType);
+            bindingAccounts.Add(account);
             MessageBox.Show("Successfully created your account. Account Number: " + account.AccountNumber);
             createAccountPanel.Hide();
             dashboardPanel.Show();
             dashboardPanel.BringToFront();
+        }
+
+        private void logoutBotton_Click(object sender, EventArgs e)
+        {
+            _user = null;
+            loginPanel.Show();
+            loginPanel.BringToFront();
+        }
+
+        private void backDashboard_Click(object sender, EventArgs e)
+        {
+            createAccountPanel.Hide();
+            dashboardPanel.Show();
+            dashboardPanel.BringToFront();
+        }
+
+        private async void submitDeposit_Click(object sender, EventArgs e)
+        {
+            bool isValid = decimal.TryParse(accountNumberText.Text, out decimal amount);
+            if (!isValid)
+            {
+                errorDeposit.Visible = true;
+                errorDeposit.Text = "Invalid amount";
+                return;
+            }
+            await _serviceManager.AccountService.Deposit(_account.AccountNumber, amount);
+            _account.Balance += amount;
+            MessageBox.Show($"Your deposit to account: {_account.AccountNumber} is successful");
+            depositPanel.Hide();
+            dashboardPanel.Show();
+            dashboardPanel.BringToFront();
+        }
+
+        private void backDeposit_Click(object sender, EventArgs e)
+        {
+            depositPanel.Hide();
+            dashboardPanel.Show();
+            dashboardPanel.BringToFront();
+        }
+
+        private void transferButton_Click(object sender, EventArgs e)
+        {
+            _account = (Account)accountsList.SelectedItem;
+            tranferAccount.Text += _account.AccountNumber;
+            transferSubmit.Enabled = false;
+            transferPanel.Show();
+            transferPanel.BringToFront();
+        }
+
+        private void backTransfer_Click(object sender, EventArgs e)
+        {
+            transferPanel.Hide();
+            dashboardPanel.Show();
+            dashboardPanel.BringToFront();
+        }
+
+        private void transferPanel_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private async void verify_Click(object sender, EventArgs e)
+        {
+            verify.Enabled = false;
+            string accountNumber = accountNumberText.Text;
+            string name = await _serviceManager.AccountService
+                .ValidateAccountNumber(accountNumber);
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                accountName.Text = "Not Found";
+                transferSubmit.Enabled = false;
+            }
+            else
+            {
+                accountName.Text = name;
+                transferSubmit.Enabled = true;
+            }
+            verify.Enabled = true;
+        }
+
+        private async void transferSubmit_Click(object sender, EventArgs e)
+        {
+            bool isValid = decimal.TryParse(amountTransfer.Text, out decimal amount);
+            string name = await _serviceManager.AccountService
+                .ValidateAccountNumber(accountNumber.Text);
+            (bool status, string error) result;
+            if (isValid && amount >= 50)
+            {
+                result = await _serviceManager.AccountService
+                     .Transfer(_account.AccountNumber, accountNumber.Text, amount,
+                     $"Transfer from {_account.FirstName} to {name}. Amount: {amount}", name);
+            }
+            else
+            {
+                errorTransfer.Text = "Invalid amount";
+                errorTransfer.Visible = true;
+                return;
+            }
+            if (!result.status)
+            {
+                errorTransfer.Text = result.error;
+                errorTransfer.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show($"Your transfer of {amount} to {name} is successful");
+                transferPanel.Hide();
+                dashboardPanel.Show();
+                dashboardPanel.BringToFront();
+            }
         }
     }
 }
