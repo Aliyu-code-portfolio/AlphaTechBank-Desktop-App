@@ -54,8 +54,29 @@
             button7 = new Button();
             listBox1 = new ListBox();
             label18 = new Label();
-            createAccountPanel = new Panel();
             depositPanel = new Panel();
+            transferPanel = new Panel();
+            panel3 = new Panel();
+            button8 = new Button();
+            button9 = new Button();
+            button10 = new Button();
+            button11 = new Button();
+            button12 = new Button();
+            listBox2 = new ListBox();
+            label19 = new Label();
+            label9 = new Label();
+            accountName = new Label();
+            verify = new Button();
+            label20 = new Label();
+            accountNumber = new TextBox();
+            tranferAccount = new Label();
+            backTransfer = new Button();
+            errorTransfer = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            amountTransfer = new TextBox();
+            transferSubmit = new Button();
+            label16 = new Label();
             accountNumberLabel = new Label();
             backDeposit = new Button();
             errorDeposit = new Label();
@@ -64,6 +85,7 @@
             accountNumberText = new TextBox();
             submitDeposit = new Button();
             label17 = new Label();
+            createAccountPanel = new Panel();
             backDashboard = new Button();
             createAcctError = new Label();
             label6 = new Label();
@@ -80,36 +102,14 @@
             firstName = new TextBox();
             createAccount = new Button();
             label3 = new Label();
-            transferPanel = new Panel();
-            accountName = new Label();
-            verify = new Button();
-            label20 = new Label();
-            accountNumber = new TextBox();
-            tranferAccount = new Label();
-            backTransfer = new Button();
-            errorTransfer = new Label();
-            label14 = new Label();
-            label15 = new Label();
-            amountTransfer = new TextBox();
-            transferSubmit = new Button();
-            label16 = new Label();
-            panel3 = new Panel();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
-            button11 = new Button();
-            button12 = new Button();
-            listBox2 = new ListBox();
-            label19 = new Label();
-            label9 = new Label();
             loginPanel.SuspendLayout();
             loginGroup.SuspendLayout();
             dashboardPanel.SuspendLayout();
             panel2.SuspendLayout();
-            createAccountPanel.SuspendLayout();
             depositPanel.SuspendLayout();
             transferPanel.SuspendLayout();
             panel3.SuspendLayout();
+            createAccountPanel.SuspendLayout();
             SuspendLayout();
             // 
             // loginPanel
@@ -117,7 +117,7 @@
             loginPanel.BackColor = SystemColors.HotTrack;
             loginPanel.Controls.Add(bankName);
             loginPanel.Controls.Add(loginGroup);
-            loginPanel.Location = new Point(74, 53);
+            loginPanel.Location = new Point(2, 0);
             loginPanel.Name = "loginPanel";
             loginPanel.Size = new Size(930, 507);
             loginPanel.TabIndex = 1;
@@ -232,7 +232,7 @@
             dashboardPanel.Controls.Add(accountsList);
             dashboardPanel.Controls.Add(label5);
             dashboardPanel.Controls.Add(panel2);
-            dashboardPanel.Location = new Point(0, 6);
+            dashboardPanel.Location = new Point(3, 0);
             dashboardPanel.Name = "dashboardPanel";
             dashboardPanel.Size = new Size(859, 507);
             dashboardPanel.TabIndex = 5;
@@ -321,7 +321,7 @@
             panel2.Controls.Add(listBox1);
             panel2.Controls.Add(label18);
             panel2.Controls.Add(depositPanel);
-            panel2.Location = new Point(0, 0);
+            panel2.Location = new Point(-1, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(859, 507);
             panel2.TabIndex = 5;
@@ -394,35 +394,9 @@
             label18.TabIndex = 0;
             label18.Text = "AlphaTech Bank";
             // 
-            // createAccountPanel
-            // 
-            createAccountPanel.BackColor = SystemColors.HotTrack;
-            createAccountPanel.Controls.Add(backDashboard);
-            createAccountPanel.Controls.Add(createAcctError);
-            createAccountPanel.Controls.Add(label6);
-            createAccountPanel.Controls.Add(current);
-            createAccountPanel.Controls.Add(savings);
-            createAccountPanel.Controls.Add(label12);
-            createAccountPanel.Controls.Add(label8);
-            createAccountPanel.Controls.Add(lastName);
-            createAccountPanel.Controls.Add(label7);
-            createAccountPanel.Controls.Add(pin);
-            createAccountPanel.Controls.Add(phoneLebel);
-            createAccountPanel.Controls.Add(phone);
-            createAccountPanel.Controls.Add(label4);
-            createAccountPanel.Controls.Add(firstName);
-            createAccountPanel.Controls.Add(createAccount);
-            createAccountPanel.Controls.Add(label3);
-            createAccountPanel.Controls.Add(dashboardPanel);
-            createAccountPanel.Location = new Point(2, -4);
-            createAccountPanel.Name = "createAccountPanel";
-            createAccountPanel.Size = new Size(930, 507);
-            createAccountPanel.TabIndex = 6;
-            // 
             // depositPanel
             // 
             depositPanel.BackColor = SystemColors.HotTrack;
-            depositPanel.Controls.Add(transferPanel);
             depositPanel.Controls.Add(accountNumberLabel);
             depositPanel.Controls.Add(backDeposit);
             depositPanel.Controls.Add(errorDeposit);
@@ -431,10 +405,249 @@
             depositPanel.Controls.Add(accountNumberText);
             depositPanel.Controls.Add(submitDeposit);
             depositPanel.Controls.Add(label17);
-            depositPanel.Location = new Point(1, 0);
+            depositPanel.Location = new Point(0, 1);
             depositPanel.Name = "depositPanel";
             depositPanel.Size = new Size(930, 507);
             depositPanel.TabIndex = 20;
+            // 
+            // transferPanel
+            // 
+            transferPanel.BackColor = SystemColors.HotTrack;
+            transferPanel.Controls.Add(label9);
+            transferPanel.Controls.Add(accountName);
+            transferPanel.Controls.Add(verify);
+            transferPanel.Controls.Add(label20);
+            transferPanel.Controls.Add(accountNumber);
+            transferPanel.Controls.Add(tranferAccount);
+            transferPanel.Controls.Add(backTransfer);
+            transferPanel.Controls.Add(errorTransfer);
+            transferPanel.Controls.Add(label14);
+            transferPanel.Controls.Add(label15);
+            transferPanel.Controls.Add(amountTransfer);
+            transferPanel.Controls.Add(transferSubmit);
+            transferPanel.Controls.Add(label16);
+            transferPanel.Location = new Point(2, 3);
+            transferPanel.Name = "transferPanel";
+            transferPanel.Size = new Size(930, 507);
+            transferPanel.TabIndex = 21;
+            transferPanel.Paint += transferPanel_Paint;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = SystemColors.HotTrack;
+            panel3.Controls.Add(button8);
+            panel3.Controls.Add(button9);
+            panel3.Controls.Add(button10);
+            panel3.Controls.Add(button11);
+            panel3.Controls.Add(button12);
+            panel3.Controls.Add(listBox2);
+            panel3.Controls.Add(label19);
+            panel3.Location = new Point(0, 1);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(859, 507);
+            panel3.TabIndex = 5;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(17, 247);
+            button8.Name = "button8";
+            button8.Size = new Size(109, 41);
+            button8.TabIndex = 6;
+            button8.Text = "Logout";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(498, 404);
+            button9.Name = "button9";
+            button9.Size = new Size(162, 41);
+            button9.TabIndex = 5;
+            button9.Text = "Create an account";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(517, 300);
+            button10.Name = "button10";
+            button10.Size = new Size(109, 41);
+            button10.TabIndex = 4;
+            button10.Text = "Transfer";
+            button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(517, 196);
+            button11.Name = "button11";
+            button11.Size = new Size(109, 41);
+            button11.TabIndex = 3;
+            button11.Text = "Withdrawal";
+            button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            button12.Location = new Point(517, 101);
+            button12.Name = "button12";
+            button12.Size = new Size(109, 41);
+            button12.TabIndex = 2;
+            button12.Text = "Deposit";
+            button12.UseVisualStyleBackColor = true;
+            // 
+            // listBox2
+            // 
+            listBox2.BackColor = SystemColors.HighlightText;
+            listBox2.BorderStyle = BorderStyle.None;
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Location = new Point(197, 101);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(195, 345);
+            listBox2.TabIndex = 1;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Enabled = false;
+            label19.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label19.ForeColor = SystemColors.ControlLight;
+            label19.Location = new Point(46, 34);
+            label19.Name = "label19";
+            label19.Size = new Size(170, 30);
+            label19.TabIndex = 0;
+            label19.Text = "AlphaTech Bank";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Enabled = false;
+            label9.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.ControlLight;
+            label9.Location = new Point(409, 72);
+            label9.Name = "label9";
+            label9.Size = new Size(94, 30);
+            label9.TabIndex = 22;
+            label9.Text = "Transfer";
+            // 
+            // accountName
+            // 
+            accountName.AutoSize = true;
+            accountName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            accountName.ForeColor = Color.Chartreuse;
+            accountName.Location = new Point(420, 200);
+            accountName.Name = "accountName";
+            accountName.Size = new Size(52, 21);
+            accountName.TabIndex = 24;
+            accountName.Text = "Name";
+            accountName.Visible = false;
+            // 
+            // verify
+            // 
+            verify.Location = new Point(420, 226);
+            verify.Name = "verify";
+            verify.Size = new Size(117, 26);
+            verify.TabIndex = 23;
+            verify.Text = "Verify Name";
+            verify.UseVisualStyleBackColor = true;
+            verify.Click += verify_Click;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(314, 177);
+            label20.Name = "label20";
+            label20.Size = new Size(99, 15);
+            label20.TabIndex = 22;
+            label20.Text = "Account Number";
+            // 
+            // accountNumber
+            // 
+            accountNumber.Location = new Point(419, 174);
+            accountNumber.Name = "accountNumber";
+            accountNumber.Size = new Size(209, 23);
+            accountNumber.TabIndex = 21;
+            // 
+            // tranferAccount
+            // 
+            tranferAccount.AutoSize = true;
+            tranferAccount.Enabled = false;
+            tranferAccount.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            tranferAccount.ForeColor = SystemColors.ControlLight;
+            tranferAccount.Location = new Point(409, 127);
+            tranferAccount.Name = "tranferAccount";
+            tranferAccount.Size = new Size(93, 25);
+            tranferAccount.TabIndex = 20;
+            tranferAccount.Text = "Account: ";
+            // 
+            // backTransfer
+            // 
+            backTransfer.Location = new Point(23, 245);
+            backTransfer.Name = "backTransfer";
+            backTransfer.Size = new Size(109, 41);
+            backTransfer.TabIndex = 7;
+            backTransfer.Text = "< Back";
+            backTransfer.UseVisualStyleBackColor = true;
+            backTransfer.Click += backTransfer_Click;
+            // 
+            // errorTransfer
+            // 
+            errorTransfer.AutoSize = true;
+            errorTransfer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            errorTransfer.ForeColor = Color.Red;
+            errorTransfer.Location = new Point(409, 296);
+            errorTransfer.Name = "errorTransfer";
+            errorTransfer.Size = new Size(45, 21);
+            errorTransfer.TabIndex = 19;
+            errorTransfer.Text = "Error";
+            errorTransfer.Visible = false;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Enabled = false;
+            label14.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label14.ForeColor = SystemColors.ControlLight;
+            label14.Location = new Point(414, 74);
+            label14.Name = "label14";
+            label14.Size = new Size(25, 30);
+            label14.TabIndex = 18;
+            label14.Text = "  ";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(319, 267);
+            label15.Name = "label15";
+            label15.Size = new Size(51, 15);
+            label15.TabIndex = 13;
+            label15.Text = "Amount";
+            // 
+            // amountTransfer
+            // 
+            amountTransfer.Location = new Point(419, 259);
+            amountTransfer.Name = "amountTransfer";
+            amountTransfer.Size = new Size(209, 23);
+            amountTransfer.TabIndex = 12;
+            // 
+            // transferSubmit
+            // 
+            transferSubmit.Location = new Point(375, 384);
+            transferSubmit.Name = "transferSubmit";
+            transferSubmit.Size = new Size(162, 41);
+            transferSubmit.TabIndex = 5;
+            transferSubmit.Text = "Transfer";
+            transferSubmit.UseVisualStyleBackColor = true;
+            transferSubmit.Click += transferSubmit_Click;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Enabled = false;
+            label16.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label16.ForeColor = SystemColors.ControlLight;
+            label16.Location = new Point(46, 34);
+            label16.Name = "label16";
+            label16.Size = new Size(170, 30);
+            label16.TabIndex = 0;
+            label16.Text = "AlphaTech Bank";
             // 
             // accountNumberLabel
             // 
@@ -519,6 +732,34 @@
             label17.Size = new Size(170, 30);
             label17.TabIndex = 0;
             label17.Text = "AlphaTech Bank";
+            // 
+            // createAccountPanel
+            // 
+            createAccountPanel.BackColor = SystemColors.HotTrack;
+            createAccountPanel.Controls.Add(loginPanel);
+            createAccountPanel.Controls.Add(panel3);
+            createAccountPanel.Controls.Add(transferPanel);
+            createAccountPanel.Controls.Add(backDashboard);
+            createAccountPanel.Controls.Add(createAcctError);
+            createAccountPanel.Controls.Add(label6);
+            createAccountPanel.Controls.Add(current);
+            createAccountPanel.Controls.Add(savings);
+            createAccountPanel.Controls.Add(label12);
+            createAccountPanel.Controls.Add(label8);
+            createAccountPanel.Controls.Add(lastName);
+            createAccountPanel.Controls.Add(label7);
+            createAccountPanel.Controls.Add(pin);
+            createAccountPanel.Controls.Add(phoneLebel);
+            createAccountPanel.Controls.Add(phone);
+            createAccountPanel.Controls.Add(label4);
+            createAccountPanel.Controls.Add(firstName);
+            createAccountPanel.Controls.Add(createAccount);
+            createAccountPanel.Controls.Add(label3);
+            createAccountPanel.Controls.Add(dashboardPanel);
+            createAccountPanel.Location = new Point(1, 0);
+            createAccountPanel.Name = "createAccountPanel";
+            createAccountPanel.Size = new Size(930, 507);
+            createAccountPanel.TabIndex = 6;
             // 
             // backDashboard
             // 
@@ -672,247 +913,6 @@
             label3.TabIndex = 0;
             label3.Text = "AlphaTech Bank";
             // 
-            // transferPanel
-            // 
-            transferPanel.BackColor = SystemColors.HotTrack;
-            transferPanel.Controls.Add(panel3);
-            transferPanel.Controls.Add(label9);
-            transferPanel.Controls.Add(accountName);
-            transferPanel.Controls.Add(verify);
-            transferPanel.Controls.Add(label20);
-            transferPanel.Controls.Add(accountNumber);
-            transferPanel.Controls.Add(tranferAccount);
-            transferPanel.Controls.Add(backTransfer);
-            transferPanel.Controls.Add(errorTransfer);
-            transferPanel.Controls.Add(label14);
-            transferPanel.Controls.Add(label15);
-            transferPanel.Controls.Add(amountTransfer);
-            transferPanel.Controls.Add(transferSubmit);
-            transferPanel.Controls.Add(label16);
-            transferPanel.Location = new Point(0, -1);
-            transferPanel.Name = "transferPanel";
-            transferPanel.Size = new Size(930, 507);
-            transferPanel.TabIndex = 21;
-            transferPanel.Paint += transferPanel_Paint;
-            // 
-            // accountName
-            // 
-            accountName.AutoSize = true;
-            accountName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            accountName.ForeColor = Color.Chartreuse;
-            accountName.Location = new Point(420, 200);
-            accountName.Name = "accountName";
-            accountName.Size = new Size(52, 21);
-            accountName.TabIndex = 24;
-            accountName.Text = "Name";
-            accountName.Visible = false;
-            // 
-            // verify
-            // 
-            verify.Location = new Point(420, 226);
-            verify.Name = "verify";
-            verify.Size = new Size(117, 26);
-            verify.TabIndex = 23;
-            verify.Text = "Verify Name";
-            verify.UseVisualStyleBackColor = true;
-            verify.Click += verify_Click;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new Point(314, 177);
-            label20.Name = "label20";
-            label20.Size = new Size(99, 15);
-            label20.TabIndex = 22;
-            label20.Text = "Account Number";
-            // 
-            // accountNumber
-            // 
-            accountNumber.Location = new Point(419, 174);
-            accountNumber.Name = "accountNumber";
-            accountNumber.Size = new Size(209, 23);
-            accountNumber.TabIndex = 21;
-            // 
-            // tranferAccount
-            // 
-            tranferAccount.AutoSize = true;
-            tranferAccount.Enabled = false;
-            tranferAccount.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            tranferAccount.ForeColor = SystemColors.ControlLight;
-            tranferAccount.Location = new Point(409, 127);
-            tranferAccount.Name = "tranferAccount";
-            tranferAccount.Size = new Size(93, 25);
-            tranferAccount.TabIndex = 20;
-            tranferAccount.Text = "Account: ";
-            // 
-            // backTransfer
-            // 
-            backTransfer.Location = new Point(23, 245);
-            backTransfer.Name = "backTransfer";
-            backTransfer.Size = new Size(109, 41);
-            backTransfer.TabIndex = 7;
-            backTransfer.Text = "< Back";
-            backTransfer.UseVisualStyleBackColor = true;
-            backTransfer.Click += backTransfer_Click;
-            // 
-            // errorTransfer
-            // 
-            errorTransfer.AutoSize = true;
-            errorTransfer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            errorTransfer.ForeColor = Color.Red;
-            errorTransfer.Location = new Point(409, 296);
-            errorTransfer.Name = "errorTransfer";
-            errorTransfer.Size = new Size(45, 21);
-            errorTransfer.TabIndex = 19;
-            errorTransfer.Text = "Error";
-            errorTransfer.Visible = false;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Enabled = false;
-            label14.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label14.ForeColor = SystemColors.ControlLight;
-            label14.Location = new Point(414, 74);
-            label14.Name = "label14";
-            label14.Size = new Size(25, 30);
-            label14.TabIndex = 18;
-            label14.Text = "  ";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(319, 267);
-            label15.Name = "label15";
-            label15.Size = new Size(51, 15);
-            label15.TabIndex = 13;
-            label15.Text = "Amount";
-            // 
-            // amountTransfer
-            // 
-            amountTransfer.Location = new Point(419, 259);
-            amountTransfer.Name = "amountTransfer";
-            amountTransfer.Size = new Size(209, 23);
-            amountTransfer.TabIndex = 12;
-            // 
-            // transferSubmit
-            // 
-            transferSubmit.Location = new Point(375, 384);
-            transferSubmit.Name = "transferSubmit";
-            transferSubmit.Size = new Size(162, 41);
-            transferSubmit.TabIndex = 5;
-            transferSubmit.Text = "Transfer";
-            transferSubmit.UseVisualStyleBackColor = true;
-            transferSubmit.Click += transferSubmit_Click;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Enabled = false;
-            label16.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.ForeColor = SystemColors.ControlLight;
-            label16.Location = new Point(46, 34);
-            label16.Name = "label16";
-            label16.Size = new Size(170, 30);
-            label16.TabIndex = 0;
-            label16.Text = "AlphaTech Bank";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = SystemColors.HotTrack;
-            panel3.Controls.Add(button8);
-            panel3.Controls.Add(button9);
-            panel3.Controls.Add(button10);
-            panel3.Controls.Add(button11);
-            panel3.Controls.Add(button12);
-            panel3.Controls.Add(listBox2);
-            panel3.Controls.Add(label19);
-            panel3.Controls.Add(loginPanel);
-            panel3.Location = new Point(1, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(859, 507);
-            panel3.TabIndex = 5;
-            // 
-            // button8
-            // 
-            button8.Location = new Point(17, 247);
-            button8.Name = "button8";
-            button8.Size = new Size(109, 41);
-            button8.TabIndex = 6;
-            button8.Text = "Logout";
-            button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            button9.Location = new Point(498, 404);
-            button9.Name = "button9";
-            button9.Size = new Size(162, 41);
-            button9.TabIndex = 5;
-            button9.Text = "Create an account";
-            button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            button10.Location = new Point(517, 300);
-            button10.Name = "button10";
-            button10.Size = new Size(109, 41);
-            button10.TabIndex = 4;
-            button10.Text = "Transfer";
-            button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            button11.Location = new Point(517, 196);
-            button11.Name = "button11";
-            button11.Size = new Size(109, 41);
-            button11.TabIndex = 3;
-            button11.Text = "Withdrawal";
-            button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            button12.Location = new Point(517, 101);
-            button12.Name = "button12";
-            button12.Size = new Size(109, 41);
-            button12.TabIndex = 2;
-            button12.Text = "Deposit";
-            button12.UseVisualStyleBackColor = true;
-            // 
-            // listBox2
-            // 
-            listBox2.BackColor = SystemColors.HighlightText;
-            listBox2.BorderStyle = BorderStyle.None;
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(197, 101);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(195, 345);
-            listBox2.TabIndex = 1;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Enabled = false;
-            label19.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label19.ForeColor = SystemColors.ControlLight;
-            label19.Location = new Point(46, 34);
-            label19.Name = "label19";
-            label19.Size = new Size(170, 30);
-            label19.TabIndex = 0;
-            label19.Text = "AlphaTech Bank";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Enabled = false;
-            label9.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label9.ForeColor = SystemColors.ControlLight;
-            label9.Location = new Point(409, 72);
-            label9.Name = "label9";
-            label9.Size = new Size(94, 30);
-            label9.TabIndex = 22;
-            label9.Text = "Transfer";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -929,14 +929,14 @@
             dashboardPanel.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            createAccountPanel.ResumeLayout(false);
-            createAccountPanel.PerformLayout();
             depositPanel.ResumeLayout(false);
             depositPanel.PerformLayout();
             transferPanel.ResumeLayout(false);
             transferPanel.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            createAccountPanel.ResumeLayout(false);
+            createAccountPanel.PerformLayout();
             ResumeLayout(false);
         }
 

@@ -195,7 +195,7 @@ namespace AlphaTechBank.UI
 
         private void transferPanel_Paint(object sender, PaintEventArgs e)
         {
-           
+
         }
 
         private async void verify_Click(object sender, EventArgs e)
